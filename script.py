@@ -1,8 +1,15 @@
 import csv
-import requests as req
+try:
+	import requests as req
+except ImportError:
+	print("У вас не установлен модуль requests. Установите модуль.")
 import sys
 
 url = "https://requestb.in/"
+
+if len(sys.argv) == 1:
+	print('Вы не указали файл. Укажите файл аргументом в команде "python3 script.py <filename>"')
+	exit()
 
 with open(sys.argv[1], 'r') as csvfile:
 	reader = csv.reader(csvfile)
