@@ -20,7 +20,8 @@ with open(sys.argv[1], 'r') as csvfile:
 		params = dict()
 		for i in range(n):
 			params[args[i]] = row[i]
-		r = req.post(url, params)
+		headers =  {'Content-type': 'application/json'}
+		r = req.post(url, params, headers = headers)
 		if r.status_code != 200:
 			print "Error"
 			exit()
