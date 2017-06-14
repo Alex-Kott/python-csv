@@ -1,14 +1,15 @@
+# -*- coding: utf-8 -*-
 import csv
 try:
 	import requests as req
 except ImportError:
-	print("У вас не установлен модуль requests. Установите модуль.")
+	print "У вас не установлен модуль requests. Установите модуль."
 import sys
 
 url = "https://requestb.in/"
 
 if len(sys.argv) == 1:
-	print('Вы не указали файл. Укажите файл аргументом в команде "python3 script.py <filename>"')
+	print 'Вы не указали файл. Укажите файл аргументом в команде "python3 script.py <filename>"'
 	exit()
 
 with open(sys.argv[1], 'r') as csvfile:
@@ -21,5 +22,5 @@ with open(sys.argv[1], 'r') as csvfile:
 			params[args[i]] = row[i]
 		r = req.post(url, params)
 		if r.status_code != 200:
-			print("Error")
+			print "Error"
 			exit()
